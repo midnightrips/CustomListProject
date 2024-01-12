@@ -1,3 +1,5 @@
+using CustomList;
+
 namespace CustomListTests
 {
     [TestClass]

@@ -9,16 +9,16 @@ namespace CustomList
     public class CustomList<T>
     {
         //Member Variables (HAS A)
-        private T[] items;
-        private int capacity;
-        private int count;
+        private T[] items; //make public indexer
+        private int capacity; //make public property
+        private int count; //make public property
 
         //Constructor
         public CustomList()
         {
-            //capacity = 
-            //count =
-            //items = 
+            capacity = 4;
+            count = 0;
+            items = //[0, 0, 0, 0]; array matching the capacity
         }
 
         //Member Methods (CAN DO)
