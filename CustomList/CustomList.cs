@@ -67,16 +67,43 @@ namespace CustomList
 
         public bool Remove(T item)
         {
+            //still need to remove an item if this method is called even if there isn't another instance of it...
+            List<T> initialItems = new();
             //If 'item' exists in the 'items' array, remove its first instance
+            for(int i=0; i < items.Length; i++)
+            {
+                initialItems[i] = items[i];
+
+                if(initialItems[i] == item) 
+                {
+                    initialItems.RemoveAt(i);
+                    count--;
+                    items[i] = initialItems[i];
+                    return true;
+                }
+            }
+
+ 
             //Any items coming after the removed item should be shifted down so there is no empty index.
             //If 'item' was removed, return true. If no item was removed, return false.
             return false;
         }
 
-        public override string ToString()
+        public override string ToString() //returns a single string that contains all items from array
         {
-            //returns a single string that contains all items from array
-            return "";
+            string myString = "";
+            List<T> initialItems = new();
+
+            //convert each item into a string
+  
+            for (int i = 0; i <items.Length; i++)
+            {
+                initialItems[i] = items[i];
+                //if int convert int to string here
+                myString = myString + initialItems[i];
+            }
+
+            return myString;
         }
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
