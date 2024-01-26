@@ -3,7 +3,7 @@
 namespace CustomListTests
 {
     [TestClass]
-    internal class RemoveMethodTests
+    public class RemoveMethodTests
     {
         [TestMethod] //test 1: count decrements when an item is successfully removed
         public void RemoveMethod_RemovingItem_CountDecremented() //method being tested_the situation we are testing_what we expect to happen

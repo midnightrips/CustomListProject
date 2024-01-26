@@ -3,7 +3,7 @@
 namespace CustomListTests
 {
     [TestClass]
-    internal class ToStringMethodOverrideTests
+    public class ToStringMethodOverrideTests
     {
         [TestMethod] //test 1: a list of strings returns expected result
         public void ToStringMethodOverride_CreateListOfString_ExpectedResultReturned() //method being tested_the situation we are testing_what we expect to happen
@@ -17,10 +17,11 @@ namespace CustomListTests
             myList.Add("name ");
             myList.Add("is ");
             myList.Add("Ehretz.");
+            myList.ToString();
 
 
             //assert
-            Assert.AreEqual("My name is Ehretz.", myString); //do we want the method to create spaces between the strings?
+            Assert.AreEqual("My name is Ehretz.", myString); 
 
         }
 
@@ -28,27 +29,31 @@ namespace CustomListTests
         public void ToStringMethodOverride_CreateListOfInts_ExpectedResultReturned() //method being tested_the situation we are testing_what we expect to happen
         {
             //arrange
-            CustomList<string> myList = new();
+            CustomList<int> myList = new();
             string myString = myList.ToString();
 
             //act
-            //convert ints to strings first?
-
+            myList.Add(1);
+            myList.Add(2);
+            myList.Add(3);
+            myList.ToString();
+    
             //assert
-            Assert.AreEqual("1, 2, 3, 4", myString);
+            Assert.AreEqual("123", myString); 
         }
 
         [TestMethod] //test 3: an empty list returns an expty string
         public void ToStringMethodOverride_CreateEmptyList_EmptyStringReturned() //method being tested_the situation we are testing_what we expect to happen
         {
             //arrange
-
+            CustomList<string> myList = new();
+            string myString = myList.ToString();
 
             //act
-
+            myList.ToString();
 
             //assert
-
+            Assert.AreEqual("", myString);
         }
     }
 }

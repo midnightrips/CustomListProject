@@ -51,7 +51,7 @@ namespace CustomList
 
             //if items array is at capacity, double capacity and create new array
             //transfer all items to new array
-            if (count > capacity)
+            if (count == capacity)
             {
                 capacity *= 2;
                 T[] tempArray = new T[capacity];
@@ -67,26 +67,32 @@ namespace CustomList
 
         public bool Remove(T item)
         {
-            //still need to remove an item if this method is called even if there isn't another instance of it...
-            List<T> initialItems = new();
-            //If 'item' exists in the 'items' array, remove its first instance
-            for(int i=0; i < items.Length; i++)
-            {
-                initialItems[i] = items[i];
+            T[] tempArray = new T[capacity];
+            int j = 0;
+            bool itemRemoved = false;
 
-                if(initialItems[i] == item) 
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == item)
                 {
-                    initialItems.RemoveAt(i);
-                    count--;
-                    items[i] = initialItems[i];
-                    return true;
+                    //nothing happens, j does not increment
                 }
+                else
+                {
+                    tempArray[j] = items[i];
+                    j++;
+                }
+
+            }
+            if (tempArray.Length < items.Length)
+            {
+                itemRemoved = true;
             }
 
- 
-            //Any items coming after the removed item should be shifted down so there is no empty index.
-            //If 'item' was removed, return true. If no item was removed, return false.
-            return false;
+
+            ////Any items coming after the removed item should be shifted down so there is no empty index.
+            ////If 'item' was removed, return true. If no item was removed, return false.
+            return itemRemoved;
         }
 
         public override string ToString() //returns a single string that contains all items from array
@@ -96,10 +102,10 @@ namespace CustomList
 
             //convert each item into a string
   
-            for (int i = 0; i <items.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
+                items[i].ToString();
                 initialItems[i] = items[i];
-                //if int convert int to string here
                 myString = myString + initialItems[i];
             }
 
@@ -108,8 +114,9 @@ namespace CustomList
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
+            CustomList<T> newList = new();
             //returns a single CustomList<T> that contains all items from firstList and all items from secondList 
-            return null;
+            return newList;
         }
 
         public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)

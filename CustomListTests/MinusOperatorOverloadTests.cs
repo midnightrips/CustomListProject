@@ -3,7 +3,7 @@
 namespace CustomListTests
 {
     [TestClass]
-    internal class MinusOperatorOverloadTests
+    public class MinusOperatorOverloadTests
     {
         [TestMethod] //test 1: first list is longer than second list
         public void MinusOperatorOverload_CreateTwoListsWhereFirstListLongerThanSecondList_FirstListLongerThanSecondList() //method being tested_the situation we are testing_what we expect to happen
