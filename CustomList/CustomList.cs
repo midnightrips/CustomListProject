@@ -71,11 +71,11 @@ namespace CustomList
             int j = 0;
             bool itemRemoved = false;
 
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == item)
+            for (int i = 0; i < count; i++) 
+            {   
+                if (items[i].Equals(item) && !itemRemoved) 
                 {
-                    //nothing happens, j does not increment
+                    itemRemoved = true;
                 }
                 else
                 {
@@ -84,11 +84,15 @@ namespace CustomList
                 }
 
             }
-            if (tempArray.Length < items.Length)
+            if (itemRemoved)
             {
-                itemRemoved = true;
+                count--;
             }
 
+            for (int i = 0; i < count; i++) // is there a better way to do this rather than create another for loop?
+            {
+                items[i] = tempArray[i];
+            }
 
             ////Any items coming after the removed item should be shifted down so there is no empty index.
             ////If 'item' was removed, return true. If no item was removed, return false.

@@ -13,10 +13,11 @@ namespace CustomListTests
 
             //act
             myList.Add("hello");
+            myList.Add("there");
             myList.Remove("hello");
 
             //assert
-            Assert.AreEqual(0, myList.Count);
+            Assert.AreEqual(1, myList.Count);
         }
 
         [TestMethod] //test 2: method returns 'true' when an item is successfully removed
