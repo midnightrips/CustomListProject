@@ -116,9 +116,24 @@ namespace CustomList
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)
         {
+            //create an empty list for ints
+            //T[] tempArray = new T[firstList.capacity];
             CustomList<T> newList = new();
+            
+ 
+            for (int i = 0; i < firstList.count; i++)
+            {
+                newList.Add(firstList.Items[i]);
+            }
+
+            for (int i = 0; i < secondList.count; i++)
+            {
+                newList.Add(secondList.Items[i]);
+            }
+
             //returns a single CustomList<T> that contains all items from firstList and all items from secondList 
             return newList;
+
         }
 
         public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)
