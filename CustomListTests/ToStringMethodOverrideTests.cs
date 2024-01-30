@@ -10,14 +10,14 @@ namespace CustomListTests
         {
             //arrange
             CustomList<string> myList = new();
-            string myString = myList.ToString();
+            string myString;
 
             //act
-            myList.Add("My ");// is there a more efficient way of adding a bunch of strings to this list?
-            myList.Add("name ");
-            myList.Add("is ");
+            myList.Add("My");// is there a more efficient way of adding a bunch of strings to this list?
+            myList.Add("name");
+            myList.Add("is");
             myList.Add("Ehretz.");
-            myList.ToString();
+            myString = myList.ToString();
 
 
             //assert
@@ -30,16 +30,16 @@ namespace CustomListTests
         {
             //arrange
             CustomList<int> myList = new();
-            string myString = myList.ToString();
+            string myString;
 
             //act
             myList.Add(1);
             myList.Add(2);
             myList.Add(3);
-            myList.ToString();
-    
+            myString = myList.ToString();
+
             //assert
-            Assert.AreEqual("123", myString); 
+            Assert.AreEqual("1 2 3", myString); 
         }
 
         [TestMethod] //test 3: an empty list returns an expty string

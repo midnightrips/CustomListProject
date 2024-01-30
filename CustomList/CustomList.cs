@@ -99,19 +99,17 @@ namespace CustomList
             return itemRemoved;
         }
 
-        public override string ToString() //returns a single string that contains all items from array
+        public override string ToString()
         {
             string myString = "";
-            List<T> initialItems = new();
+            List<string> tempArray = new List<string>();
 
-            //convert each item into a string
-  
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < count; i++)
             {
-                items[i].ToString();
-                initialItems[i] = items[i];
-                myString = myString + initialItems[i];
+                tempArray.Add(items[i].ToString());
             }
+
+            myString = string.Join(" ", tempArray);
 
             return myString;
         }
