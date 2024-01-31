@@ -1,0 +1,47 @@
+This file describes the details and functionality of the – operator overload. 
+I want to include details such as “syntax”, “parameters”, “return type”, and an example of it being used, with the output
+
+DEFINITION: subtracts one instance of a custom list class from another instance of a custom list class resulting in each item from the second list being removed from the first list.
+
+		public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)
+
+Parameters: CustomList<T> firstList, CustomList<T> secondList
+		The lists whose items are to be compared to each other. secondList contains the items that, if existing in firstList, will have their first instance removed from firstList.
+
+Returns: CustomList<T> newList
+		The result of the - operator overload method. The list contains the items in firstList that were not removed by the - operator overload method.
+
+Implements: firstList - secondList
+
+EXAMPLE: The following example demonstrates the - Operator Overload method.
+
+            CustomList<int> firstList = new();
+            CustomList<int> secondList = new();
+            CustomList<int> newList = new();
+
+            firstList.Add(3);
+            firstList.Add(2);
+            firstList.Add(3);
+            firstList.Add(4);
+            firstList.Add(5);
+            secondList.Add(1);
+            secondList.Add(2);
+            secondList.Add(3);
+
+            for(int i = 0; i < firstList.Count; i++;)
+            {
+                Console.WriteLine(firstList.Items[i]);
+            }
+            
+            for(int i = 0; i < secondList.Count; i++;)
+            {
+                Console.WriteLine(secondList.Items[i]);
+            }
+
+            newList = firstList - secondList;
+
+            for(int i = 0; i < newList.Count; i++;)
+            {
+                Console.WriteLine(newList.Items[i]);
+            }
+
