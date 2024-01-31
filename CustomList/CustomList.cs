@@ -9,8 +9,8 @@ namespace CustomList
     public class CustomList<T>
     {
         //Member Variables (HAS A)
-        private T[] items; 
-        public T[] Items 
+        private T[] items;
+        public T[] Items
         {
             get
             {
@@ -62,7 +62,7 @@ namespace CustomList
 
                 items = tempArray;
             }
-            
+
         }
 
         public bool Remove(T item)
@@ -71,9 +71,9 @@ namespace CustomList
             int j = 0;
             bool itemRemoved = false;
 
-            for (int i = 0; i < count; i++) 
-            {   
-                if (items[i].Equals(item) && !itemRemoved) 
+            for (int i = 0; i < count; i++)
+            {
+                if (items[i].Equals(item) && !itemRemoved)
                 {
                     itemRemoved = true;
                 }
@@ -119,8 +119,8 @@ namespace CustomList
             //create an empty list for ints
             //T[] tempArray = new T[firstList.capacity];
             CustomList<T> newList = new();
-            
- 
+
+
             for (int i = 0; i < firstList.count; i++)
             {
                 newList.Add(firstList.Items[i]);
@@ -138,10 +138,55 @@ namespace CustomList
 
         public static CustomList<T> operator -(CustomList<T> firstList, CustomList<T> secondList)
         {
-            //returns a single CustomList<T> with all items from firstList, EXCEPT any items that also appear in secondList
-            return null;
+            CustomList<T> newList = new();
+
+            T[] tempArray = new T[firstList.capacity];
+            int j = 0;
+            bool itemRemoved = false;
+            int maxItems;
+
+            //for (int i = 0; i < firstList.count; i++)
+            //{
+            //    newList.Add(firstList.Items[i]);
+            //}
+            if (firstList.count > secondList.count)
+            {
+                maxItems = firstList.count;
+            }
+            else if (firstList.count < secondList.count)
+            {
+                maxItems = secondList.count;
+            }
+            else
+            {
+                maxItems = firstList.count;
+            }
+
+            for (int i = 0; i < maxItems; i++)
+            {
+                if (firstList.items[i].Equals(secondList.items[i]) && !itemRemoved)
+                {
+                    itemRemoved = true;
+                    firstList.count--;
+                }
+                else
+                {
+                    tempArray[j] = firstList.items[i];
+                    j++;
+                }
+
+                //returns a single CustomList<T> with all items from firstList, EXCEPT any items that also appear in secondList
+                
+            }
+
+            for (int i = 0; i < tempArray.Length; i++) // is there a better way to do this rather than create another for loop?
+            {
+                firstList.items[i] = tempArray[i];
+            }
+            newList = firstList;
+
+            return newList;
+
         }
-
-
     }
 }

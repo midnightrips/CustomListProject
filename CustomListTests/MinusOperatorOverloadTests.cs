@@ -72,8 +72,8 @@ namespace CustomListTests
             Assert.AreEqual(firstList, newList);
         }
 
-        [TestMethod] //test 4: operation should only remove single instance of thing in second list (i.e. {3,3,3} - {1,2,3} should result in {3,3}, not an empty list)
-        public void MinusOperatorOverload_RemovingOneInstanceOfItemInSecondList_OnlyOneInstanceOfItemInSecondListRemoved() //method being tested_the situation we are testing_what we expect to happen
+        [TestMethod] //test 4: operation should only remove single instance of thing in second list (i.e. {3,3,3} - {1,2,3} should result in {3,3}, not an empty list) TEST FOR WHEN THERE IS MORE THAN ONE NUMBER THAT NEEDS TO BE REMOVED
+        public void MinusOperatorOverload_RemovingOneInstanceOfItemInSecondList_OnlyOneInstanceOfItemInSecondListRemoved() //method being tested_the situation we are testing_what we expect to happen 
         {
             //arrange
             CustomList<int> firstList = new();
