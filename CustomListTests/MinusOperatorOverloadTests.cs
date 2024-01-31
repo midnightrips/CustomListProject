@@ -84,14 +84,14 @@ namespace CustomListTests
 
             //act
             firstList.Add(3);
-            firstList.Add(3);
+            firstList.Add(2);
             firstList.Add(3);
             secondList.Add(1);
             secondList.Add(2);
             secondList.Add(3);
             newList = firstList - secondList;
             actualString = newList.ToString();
-            expectedString = "3 3";
+            expectedString = "2 3";
 
             //assert
             Assert.AreEqual(expectedString, actualString);
