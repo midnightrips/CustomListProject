@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomList<T>
+    public class CustomList<T> : IEnumerable
     {
         //Member Variables (HAS A)
         private T[] items;
@@ -32,6 +33,15 @@ namespace CustomList
             {
                 return count;
             }
+        }
+
+        public IEnumerator GetEnumerator()
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                yield return items[i];
+            }
+            
         }
 
         //Constructor
@@ -112,6 +122,16 @@ namespace CustomList
             myString = string.Join(" ", tempArray);
 
             return myString;
+        }
+
+        public bool MoveNext()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Reset()
+        {
+            throw new NotImplementedException();
         }
 
         public static CustomList<T> operator +(CustomList<T> firstList, CustomList<T> secondList)

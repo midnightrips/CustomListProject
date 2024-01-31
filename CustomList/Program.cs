@@ -9,6 +9,11 @@
             Console.WriteLine(myList.Count);
             Console.WriteLine(myList.Capacity);
             Console.WriteLine(myList.Items[2]);
+
+            foreach (string item in myList)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
