@@ -14,7 +14,7 @@ namespace CustomListTests
             CustomList<int> newList = new();
             string expectedString;
             string actualString;
-            
+
 
             //act
             firstList.Add(1);
@@ -72,6 +72,32 @@ namespace CustomListTests
 
             //assert
             Assert.AreEqual(2, newList.Count);
+            Assert.AreEqual(expectedString, actualString);
+        }
+        [TestMethod] //test 4*: capacity exceeded
+        public void PlusOperatorOverload_CapacityExceeded_MethodStillProducesExpectedResult() //method being tested_the situation we are testing_what we expect to happen
+        {
+            //arrange
+            CustomList<int> firstList = new();
+            CustomList<int> secondList = new();
+            CustomList<int> newList = new();
+            string expectedString;
+            string actualString;
+
+
+            //act
+            firstList.Add(1);
+            firstList.Add(2);
+            firstList.Add(3);
+            firstList.Add(4);
+            firstList.Add(5);
+            secondList.Add(1);
+            newList = firstList + secondList;
+            actualString = newList.ToString();
+            expectedString = "1 2 3 4 5 1";
+
+
+            //assert
             Assert.AreEqual(expectedString, actualString);
         }
     }

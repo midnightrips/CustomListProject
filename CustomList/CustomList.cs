@@ -142,8 +142,8 @@ namespace CustomList
 
             T[] tempArray = new T[firstList.capacity];
             int j = 0;
-            bool itemRemoved = false;
             int maxItems;
+            CustomList<T> removedItems = new();
 
             if (firstList.count > secondList.count)
             {
@@ -160,9 +160,9 @@ namespace CustomList
 
             for (int i = 0; i < maxItems; i++)
             {
-                if (secondList.items.Contains(firstList.items[i]) && !itemRemoved)
+                if (secondList.items.Contains(firstList.items[i]) && !removedItems.items.Contains(firstList.items[i])) //and exists on a list of things removed
                 {
-                    itemRemoved = true;
+                    removedItems.Add(firstList.items[i]);
                     firstList.count--;
                 }
                 else

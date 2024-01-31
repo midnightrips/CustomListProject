@@ -28,7 +28,7 @@ namespace CustomListTests
         }
 
         [TestMethod] //test 2: second list is longer than first list
-        public void MinusOperatorOverload_CreateTwoListsWhereSecondListLongerThanFirstList_ListsCombinedSuccessfully() //method being tested_the situation we are testing_what we expect to happen
+        public void MinusOperatorOverload_SecondListLongerThanFirstList_ListsCombinedSuccessfully() //method being tested_the situation we are testing_what we expect to happen
         {
             //arrange
             CustomList<int> firstList = new();
@@ -84,18 +84,44 @@ namespace CustomListTests
 
             //act
             firstList.Add(3);
-            firstList.Add(2);
+            firstList.Add(3);
             firstList.Add(3);
             secondList.Add(1);
             secondList.Add(2);
             secondList.Add(3);
             newList = firstList - secondList;
             actualString = newList.ToString();
-            expectedString = "2 3";
+            expectedString = "3 3";
 
             //assert
             Assert.AreEqual(expectedString, actualString);
             Assert.AreEqual(2, newList.Count);
+        }
+        [TestMethod] //test 5*: capacity exceeded
+        public void MinusOperatorOverload_CapacityExceeded_MethodStillProducesExpectedResult() //method being tested_the situation we are testing_what we expect to happen 
+        {
+            //arrange
+            CustomList<int> firstList = new();
+            CustomList<int> secondList = new();
+            CustomList<int> newList = new();
+            string expectedString;
+            string actualString;
+
+            //act
+            firstList.Add(3);
+            firstList.Add(2);
+            firstList.Add(3);
+            firstList.Add(4);
+            firstList.Add(5);
+            secondList.Add(1);
+            secondList.Add(2);
+            secondList.Add(3);
+            newList = firstList - secondList;
+            actualString = newList.ToString();
+            expectedString = "3 4 5";
+
+            //assert
+            Assert.AreEqual(expectedString, actualString);
         }
     }
 }
